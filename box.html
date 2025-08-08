@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Griglia interattiva</title>
+  <style>
+  body {
+    background-color: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  #grid {
+    width: 400px;
+    height: 400px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 5px;
+    background-color: white;
+    padding: 5px;
+  }
+
+  .box {
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+.box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+
+.box img.show {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.box img.hide {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+#toggleContainer {
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  background-color: transparent;
+  padding: 10px 15px;
+  border: 2px solid white;
+  border-radius: 8px;
+  color: white;
+  font-family: sans-serif;
+  z-index: 9999;
+}
+
+#toggleContainer input[type="checkbox"] {
+  margin-right: 8px;
+  transform: scale(1.2);
+}
+
+
+</style>
+
+</head>
+<div id="toggleContainer">
+  <label>
+    <input type="checkbox" id="multiViewToggle" />
+    <span>Visualizza tutte le immagini insieme</span>
+  </label>
+</div>
+
+
+<body>
+
+  <div id="grid">
+    <div id="box1" class="box">
+      <img src="Thank.png" alt="Immagine 1" />
+    </div>
+    <div id="box2" class="box">
+      <img src="You.png" alt="Immagine 2" />
+    </div>
+    <div id="box3" class="box">
+      <img src="Very.png" alt="Immagine 3" />
+    </div>
+    <div id="box4" class="box">
+      <img src="Much.png" alt="Immagine 4" />
+    </div>
+  </div>
+
+<script>
+
+  const boxes = document.querySelectorAll('.box');
+  const toggle = document.getElementById('multiViewToggle');
+
+  boxes.forEach(box => {
+    const img = box.querySelector('img');
+
+    box.addEventListener('click', () => {
+      const isVisible = img.classList.contains('show');
+      const allowMultiple = toggle.checked;
+
+      if (!allowMultiple) {
+        // Chiude tutte le immagini visibili se la modalità è "uno alla volta"
+        document.querySelectorAll('.box img.show').forEach(openImg => {
+          if (openImg !== img) {
+            openImg.classList.remove('show');
+            openImg.classList.add('hide');
+            setTimeout(() => openImg.classList.remove('hide'), 300);
+          }
+        });
+      }
+
+      if (isVisible) {
+        // Se è già visibile, chiude con animazione
+        img.classList.remove('show');
+        img.classList.add('hide');
+        setTimeout(() => img.classList.remove('hide'), 300);
+      } else {
+        // Apre l'immagine cliccata
+        img.classList.add('show');
+      }
+    });
+  });
+</script>
+
+
+
+</body>
+</html>

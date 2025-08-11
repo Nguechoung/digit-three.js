@@ -23,8 +23,8 @@
 		<script type="importmap">
 			{
 				"imports": {
-					"three": "../build/three.module.js",
-					"three/addons/": "./jsm/"
+					"three": "..https://nguechoung.github.io/digit-three.js//build/three.module.js",
+					"three/addons/": ".https://nguechoung.github.io/digit-three.js//jsm/"
 				}
 			}
 		</script>
@@ -33,12 +33,12 @@
 
 			import * as THREE from 'three';
 
-			import Stats from 'three/addons/libs/stats.module.js';
-			import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
+			import Stats from 'https://nguechoung.github.io/digit-three.js/three/addons/libs/stats.module.js';
+			import { GUI } from 'https://nguechoung.github.io/digit-three.js/three/addons/libs/lil-gui.module.min.js';
 
-			import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-			import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-			import { DecalGeometry } from 'three/addons/geometries/DecalGeometry.js';
+			import { OrbitControls } from 'https://nguechoung.github.io/digit-three.js/three/addons/controls/OrbitControls.js';
+			import { GLTFLoader } from 'https://nguechoung.github.io/digit-three.js/three/addons/loaders/GLTFLoader.js';
+			import { DecalGeometry } from 'https://nguechoung.github.io/digit-three.js/three/addons/geometries/DecalGeometry.js';
 
 			
 
@@ -137,9 +137,9 @@
 			const intersects = [];
 
 			const textureLoader = new THREE.TextureLoader();
-			const decalDiffuse = textureLoader.load( 'textures/decal/decal-diffuse.png' );
+			const decalDiffuse = textureLoader.load( 'https://nguechoung.github.io/digit-three.js/textures/decal/decal-diffuse.png' );
 			decalDiffuse.colorSpace = THREE.SRGBColorSpace;
-			const decalNormal = textureLoader.load( 'textures/decal/decal-normal.jpg' );
+			const decalNormal = textureLoader.load( 'https://nguechoung.github.io/digit-three.js/textures/decal/decal-normal.jpg' );
 
 			const decalMaterial = new THREE.MeshPhongMaterial( {
 				specular: 0x444444,
@@ -359,15 +359,15 @@
 			
 			function loadLeePerrySmith() {
 
-	const map = textureLoader.load( 'models/gltf/LeePerrySmith/Map-COL.jpg' );
+	const map = textureLoader.load( 'https://nguechoung.github.io/digit-three.js/models/gltf/LeePerrySmith/Map-COL.jpg' );
 	
 	map.colorSpace = THREE.SRGBColorSpace;
-	const specularMap = textureLoader.load( 'models/gltf/LeePerrySmith/Map-SPEC.jpg' );
-	const normalMap = textureLoader.load( 'models/gltf/LeePerrySmith/Infinite-Level_02_Tangent_SmoothUV.jpg' );
+	const specularMap = textureLoader.load( 'https://nguechoung.github.io/digit-three.js/models/gltf/LeePerrySmith/Map-SPEC.jpg' );
+	const normalMap = textureLoader.load( 'https://nguechoung.github.io/digit-three.js/models/gltf/LeePerrySmith/Infinite-Level_02_Tangent_SmoothUV.jpg' );
 
 	const loader = new GLTFLoader();
 
-	loader.load( 'models/gltf/LeePerrySmith/LeePerrySmith.glb', function ( gltf ) { 
+	loader.load( 'https://nguechoung.github.io/digit-three.js/models/gltf/LeePerrySmith/LeePerrySmith.glb', function ( gltf ) { 
 
 	mesh = gltf.scene.children[ 0 ];
 	mesh.material = new THREE.MeshPhongMaterial( {
